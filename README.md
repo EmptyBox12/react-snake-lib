@@ -2,7 +2,7 @@
 
 A highly customizable snake game component created using React.js
 
-You can demo the game <a targer="_blank" href="https://react-snake-lib-demo.netlify.app/">here</a>
+You can demo the game <a target="_blank" href="https://react-snake-lib-demo.netlify.app/">here</a>
 
 ## Installation
 
