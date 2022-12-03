@@ -163,7 +163,12 @@ export const Snake = (props) => {
             gameOver = true;
             return gameOverHandler(element);
           }
-          let nextCell = getCellInfo(element.x, element.y + 1);
+          let nextCell;
+          if(noWall && element.y + 1 === size){
+            nextCell = getCellInfo(element.x, 0);
+          } else {
+            nextCell = getCellInfo(element.x, element.y + 1);
+          }
           if (nextCell.snake) {
             gameOver = true;
             return gameOverHandler(element);
@@ -179,7 +184,12 @@ export const Snake = (props) => {
             gameOver = true;
             return gameOverHandler(element);
           }
-          let nextCell = getCellInfo(element.x + 1, element.y);
+          let nextCell;
+          if(noWall && element.x + 1 === size){
+            nextCell = getCellInfo(0, element.y);
+          } else {
+            nextCell = getCellInfo(element.x + 1, element.y);
+          }
           if (nextCell.snake) {
             gameOver = true;
             return gameOverHandler(element);
@@ -195,7 +205,12 @@ export const Snake = (props) => {
             gameOver = true;
             return gameOverHandler(element);
           }
-          let nextCell = getCellInfo(element.x, element.y - 1);
+          let nextCell;
+          if(noWall && element.y -1 === -1){
+            nextCell = getCellInfo(element.x, size - 1);
+          } else {
+            nextCell = getCellInfo(element.x, element.y - 1);
+          }
           if (nextCell.snake) {
             gameOver = true;
             return gameOverHandler(element);
@@ -211,7 +226,12 @@ export const Snake = (props) => {
             gameOver = true;
             return gameOverHandler(element);
           }
-          let nextCell = getCellInfo(element.x - 1, element.y);
+          let nextCell;
+          if(noWall && element.x -1 === -1){
+            nextCell = getCellInfo(size - 1, element.y);
+          } else {
+            nextCell = getCellInfo(element.x - 1, element.y);
+          }
           if (nextCell.snake) {
             gameOver = true;
             return gameOverHandler(element);
