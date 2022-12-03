@@ -1,6 +1,6 @@
 {
   "name": "react-snake-lib",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A highly customizable snake game created using React",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
