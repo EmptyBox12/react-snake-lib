@@ -33,6 +33,7 @@ export const Snake = (props) => {
   const borderWidth = props.borderWidth ?? 0;
   const shakeBoard = props.shakeBoard ?? true;
   const boxShadow = props.boxShadow ?? "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px";
+  const noWall = props.noWall ?? false;
   const startButtonStyle = props.startButtonStyle ?? {
     borderRadius: "5px",
     border: "1px solid silver",
@@ -158,7 +159,7 @@ export const Snake = (props) => {
     let newSnake = snake.map((element, index) => {
       if (index === snake.length - 1) {
         if (direction === "down") {
-          if (element.y + 1 === size) {
+          if (element.y + 1 === size && !noWall) {
             gameOver = true;
             return gameOverHandler(element);
           }
@@ -169,9 +170,12 @@ export const Snake = (props) => {
           } else if (nextCell.apple) {
             grow = true;
           }
+          if (noWall && element.y + 1 === size) {
+            return { y: 0, x: element.x };
+          }
           return { y: element.y + 1, x: element.x };
         } else if (direction === "right") {
-          if (element.x + 1 === size) {
+          if (element.x + 1 === size && !noWall) {
             gameOver = true;
             return gameOverHandler(element);
           }
@@ -182,9 +186,12 @@ export const Snake = (props) => {
           } else if (nextCell.apple) {
             grow = true;
           }
+          if (noWall && element.x + 1 === size) {
+            return { y: element.y, x: 0 };
+          }
           return { y: element.y, x: element.x + 1 };
         } else if (direction === "up") {
-          if (element.y - 1 === -1) {
+          if (element.y - 1 === -1 && !noWall) {
             gameOver = true;
             return gameOverHandler(element);
           }
@@ -195,9 +202,12 @@ export const Snake = (props) => {
           } else if (nextCell.apple) {
             grow = true;
           }
+          if(noWall && element.y - 1 === -1 ){
+            return { y: size - 1, x: element.x };
+          }
           return { y: element.y - 1, x: element.x };
         } else if (direction === "left") {
-          if (element.x - 1 === -1) {
+          if (element.x - 1 === -1 && !noWall) {
             gameOver = true;
             return gameOverHandler(element);
           }
@@ -207,6 +217,9 @@ export const Snake = (props) => {
             return gameOverHandler(element);
           } else if (nextCell.apple) {
             grow = true;
+          }
+          if(noWall && element.x - 1 === -1 ){
+            return { y: element.y, x: size - 1 };
           }
           return { y: element.y, x: element.x - 1 };
         }

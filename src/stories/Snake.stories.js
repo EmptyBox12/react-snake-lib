@@ -27,6 +27,7 @@ stories.add('App', () => {
         startGameText="Oyunu Başlat"
         size={10}
         shakeBoard={true}
+        noWall={true}
       />
     </div>
 

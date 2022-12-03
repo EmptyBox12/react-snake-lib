@@ -50,5 +50,6 @@ Or you can customize it
   startButtonHoverStyle={{
     backgroundColor: "#4f4d4d"
   }}
+  noWall={false}
   />
 ```
